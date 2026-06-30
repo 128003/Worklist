@@ -17,17 +17,30 @@
   <div id="toolGrid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:12px;"></div>
 </div>
 
-<div class="card">
-  <div class="section-title">🖼️ 影像 / 報告產生器</div>
-  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:12px;">
-    <a class="tool-card card" style="margin:0;" href="https://128003.github.io/Echo-/" target="_blank"><span class="tag yellow" style="width:fit-content;">外部</span><div class="item-name">MSK 超音波報告產生器</div><div class="item-sub">結構化勾選＋注射紀錄輸出</div></a>
+<div class="block-row">
+  <div class="block-card block-child">
+    <div class="block-title">👶 兒童發展</div>
+    <div class="block-sub">S/O/A 三段式評估工具</div>
+    <a class="tool-card" href="child-development.html">
+      <div class="item-name">兒童發展評估</div>
+      <div class="item-sub">年齡階梯評估＋診斷選單</div>
+    </a>
   </div>
-</div>
-
-<div class="card">
-  <div class="section-title">🏃 運動處方</div>
-  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:12px;">
-    <a class="tool-card card" style="margin:0;" href="https://exerciseprescription.sportsmedicine.tw/" target="_blank"><span class="tag yellow" style="width:fit-content;">外部</span><div class="item-name">運動處方推薦系統</div><div class="item-sub">ACSM FITT-VP 個人化建議</div></a>
+  <div class="block-card block-img">
+    <div class="block-title">🖼️ 影像 / 報告產生器</div>
+    <div class="block-sub">外部連結</div>
+    <a class="tool-card" href="https://128003.github.io/Echo-/" target="_blank">
+      <div class="item-name">MSK 超音波報告產生器</div>
+      <div class="item-sub">結構化勾選＋注射紀錄輸出</div>
+    </a>
+  </div>
+  <div class="block-card block-sport">
+    <div class="block-title">🏃 運動處方</div>
+    <div class="block-sub">外部連結</div>
+    <a class="tool-card" href="https://exerciseprescription.sportsmedicine.tw/" target="_blank">
+      <div class="item-name">運動處方推薦系統</div>
+      <div class="item-sub">ACSM FITT-VP 個人化建議</div>
+    </a>
   </div>
 </div>
 
@@ -47,7 +60,7 @@
   <div id="qrcode" style="margin-top:12px;"></div>
 </div>
 
-<footer>僅供醫療教育用途 · 各工具資料僅存於使用者本機瀏覽器，不上傳伺服器</footer>
+<footer>僅供醫療教育用途 · 各工具資料僅存於使用者本機瀏覽器，不上傳伺服器 · 復健科 許雅筑醫師</footer>
 </div>
 
 <script>
@@ -62,9 +75,8 @@ const TOOLS = [
   {href:"gird-shoulder.html", icon:"🏐", name:"GIRD 肩旋轉缺損", desc:"投擲肩雙側角度比較", regions:["肩"]},
   {href:"spadi-shoulder.html", icon:"🤕", name:"SPADI 肩痛與失能", desc:"5+8題計分換算", regions:["肩"]},
   {href:"visa-a-achilles.html", icon:"🦵", name:"VISA-A 阿基里斯肌腱病", desc:"8題總分0–100", regions:["踝・足"]},
-  {href:"child-development.html", icon:"👶", name:"兒童發展評估", desc:"S/O/A三段式，年齡階梯評估＋診斷選單", regions:["兒童發展"]},
 ];
-const REGIONS = ["全部","肩","肘・腕","脊椎","髖","膝","踝・足","頭部","兒童發展"];
+const REGIONS = ["全部","肩","肘・腕","脊椎","髖","膝","踝・足","頭部"];
 let currentRegion = "全部";
 
 function renderTabs(){

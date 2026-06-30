@@ -1,9 +1,10 @@
 :root{
-  --bg:#f6f7fb; --card:#ffffff; --ink:#1c2333; --sub:#5b6472;
-  --accent:#2563eb; --accent2:#7c3aed; --accent-light:#eaf0fd; --line:#e6e8ee;
-  --g0:#9aa1ab; --g1:#e07a5f; --g2:#f2a541; --g3:#f4c542; --g4:#9bc53d; --g5:#3aa655;
-  --bad:#d64545; --warn:#cf8b00; --good:#1f8b46;
+  --bg:#f2efe9; --card:#fffdfa; --ink:#4a443e; --sub:#8c8275;
+  --accent:#8a9b8e; --accent2:#b98a72; --accent-light:#eaeee5; --line:#e4ddd2;
+  --g0:#a39b8e; --g1:#c98a72; --g2:#cba35d; --g3:#cdb96a; --g4:#94a878; --g5:#7e9680;
+  --bad:#bd7e74; --warn:#bd935a; --good:#7e9680;
   --radius:16px;
+  --block-child:#e8e2da; --block-img:#dde3da; --block-sport:#e3ddd0;
 }
 *{box-sizing:border-box;}
 body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang TC","Microsoft JhengHei",sans-serif;}
@@ -56,3 +57,12 @@ table th{color:var(--sub);font-weight:700;}
 .checklist-item{display:flex;align-items:flex-start;gap:10px;padding:9px 0;border-bottom:1px dashed var(--line);}
 .checklist-item:last-child{border-bottom:none;}
 .checklist-item input[type=checkbox]{width:18px;height:18px;margin-top:1px;accent-color:var(--accent);flex-shrink:0;}
+.block-row{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:14px;}
+@media (max-width:760px){.block-row{grid-template-columns:1fr;}}
+.block-card{border-radius:18px;padding:20px;border:1px solid var(--line);}
+.block-card .block-title{font-size:15px;font-weight:800;margin-bottom:4px;}
+.block-card .block-sub{font-size:12px;color:var(--sub);margin-bottom:14px;}
+.block-card .tool-card{background:rgba(255,255,255,0.55);border:1px solid rgba(0,0,0,0.05);border-radius:13px;padding:14px;}
+.block-child{background:var(--block-child);}
+.block-img{background:var(--block-img);}
+.block-sport{background:var(--block-sport);}
