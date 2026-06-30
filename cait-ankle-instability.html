@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-TW"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CAIT 踝關節不穩篩檢 | 復健科臨床工具</title>
+<link rel="stylesheet" href="../assets/style.css"></head>
+<body><div class="wrap">
+<a class="back" href="../index.html">← 回工具箱首頁</a>
+<h1>🦶 CAIT 計分器</h1>
+<div class="sub">Cumberland Ankle Instability Tool — 慢性踝關節不穩篩檢，總分 0–30</div>
+<div class="disclaimer">⚠️ 官方 CAIT 共 9 題（題目版權屬原作者），此工具提供計分換算：請依官方量表本逐題詢問，將各題分數加總後輸入下方計算總分與判讀。</div>
+
+<div class="card">
+  <div class="section-title">輸入 9 題分數總和</div>
+  <input type="number" id="totalScore" min="0" max="30" placeholder="輸入 0-30 之總分">
+  <div class="result-box" id="resultBox" style="margin-top:12px;"></div>
+</div>
+
+<div class="card">
+  <div class="section-title">📝 備註</div>
+  <textarea id="notes" placeholder="受傷側、扭傷次數、症狀描述..."></textarea>
+</div>
+
+<div class="toolbar">
+  <button class="action btn-primary" id="saveBtn">儲存結果</button>
+  <button class="action btn-ghost" id="exportBtn">複製文字摘要</button>
+</div>
+<div class="saved-note" id="savedNote"></div>
+<div class="card" style="display:none;" id="historyCard">
+  <div class="section-title">🕓 歷史紀錄</div>
+  <div id="historyList"></div>
+</div>
+<footer>僅供醫療教育用途 · 資料不上傳伺服器</footer>
+</div>
+
+<script src="../assets/common.js"></script>
+<script>
+const STORE_KEY = "cait_score_v1";
+function compute(){
+  const v = parseFloat(document.getElementById('totalScore').value);
+  const box = document.getElementById('resultBox');
+  if(isNaN(v)){ box.innerHTML = '請輸入總分'; return; }
+  const unstable = v <= 27;
+  box.innerHTML = `<div class="result-num">${v} / 30</div>
+    <div>${unstable ? '<span class="tag red">提示功能性踝關節不穩（≤27分）</span>' : '<span class="tag green">分數正常範圍（>27分）</span>'}</div>`;
+}
+document.getElementById('totalScore').addEventListener('input', compute);
+
+function summaryText(){
+  const v = document.getElementById('totalScore').value;
+  const notes = document.getElementById('notes').value.trim();
+  return `CAIT 評估摘要 - ${new Date().toLocaleString('zh-TW')}\n總分：${v||'-'}/30\n${document.getElementById('resultBox').innerText}${notes?'\n備註：'+notes:''}`;
+}
+document.getElementById('saveBtn').addEventListener('click', ()=>{
+  rtSave(STORE_KEY, summaryText());
+  rtFlash(document.getElementById('savedNote'), '已儲存到本機 ✓');
+  rtRenderHistory(STORE_KEY, document.getElementById('historyList'));
+});
+document.getElementById('exportBtn').addEventListener('click', ()=>{
+  rtCopy(summaryText(), document.getElementById('savedNote'));
+});
+rtRenderHistory(STORE_KEY, document.getElementById('historyList'));
+</script>
+</body></html>
