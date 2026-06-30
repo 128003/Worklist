@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh-TW"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>復健科臨床工具箱</title>
+<link rel="stylesheet" href="assets/style.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+</head>
+<body><div class="wrap">
+<h1>🩺 復健科臨床工具箱</h1>
+<div class="sub">評估量表 · 決策樹 · 影像報告 · 運動處方 — 部署於 GitHub Pages，資料皆儲存於使用者本機瀏覽器</div>
+
+<div class="section-title" style="margin-top:24px;">📋 臨床評估與量表</div>
+<div class="grid2" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px;">
+  <a class="tool-card card" href="tools/mmt-score.html"><span class="tag green" style="width:fit-content;">本機</span><div class="item-name">MMT 肌力評分板</div><div class="item-sub">MRC 0–5 ＋神經根對照</div></a>
+  <a class="tool-card card" href="tools/rom-goniometer.html"><span class="tag green" style="width:fit-content;">本機</span><div class="item-name">ROM 關節活動度</div><div class="item-sub">上下肢多關節雙側追蹤</div></a>
+  <a class="tool-card card" href="tools/ottawa-rules.html"><span class="tag green" style="width:fit-content;">本機</span><div class="item-name">Ottawa Ankle/Knee Rules</div><div class="item-sub">急性外傷 X 光決策樹</div></a>
+  <a class="tool-card card" href="tools/outcome-scales.html"><span class="tag green" style="width:fit-content;">本機</span><div class="item-name">功能量表計分 7合1</div><div class="item-sub">QuickDASH/KOOS/HOOS/WOMAC/ODI/NDI/LEFS</div></a>
+  <a class="tool-card card" href="tools/special-tests.html"><span class="tag green" style="width:fit-content;">本機</span><div class="item-name">骨科特殊測試查詢庫</div><div class="item-sub">操作方式＋Sn/Sp 參考值</div></a>
+  <a class="tool-card card" href="tools/concussion-track.html"><span class="tag green" style="width:fit-content;">本機</span><div class="item-name">腦震盪評估追蹤（簡化版）</div><div class="item-sub">症狀量表＋平衡測試記錄</div></a>
+  <a class="tool-card card" href="tools/cait-ankle-instability.html"><span class="tag green" style="width:fit-content;">本機</span><div class="item-name">CAIT 踝關節不穩</div><div class="item-sub">總分換算與判讀</div></a>
+  <a class="tool-card card" href="tools/gird-shoulder.html"><span class="tag green" style="width:fit-content;">本機</span><div class="item-name">GIRD 肩旋轉缺損</div><div class="item-sub">投擲肩雙側角度比較</div></a>
+  <a class="tool-card card" href="tools/spadi-shoulder.html"><span class="tag green" style="width:fit-content;">本機</span><div class="item-name">SPADI 肩痛與失能</div><div class="item-sub">5+8題計分換算</div></a>
+  <a class="tool-card card" href="tools/visa-a-achilles.html"><span class="tag green" style="width:fit-content;">本機</span><div class="item-name">VISA-A 阿基里斯肌腱病</div><div class="item-sub">8題總分0–100</div></a>
+</div>
+
+<div class="section-title" style="margin-top:28px;">🖼️ 影像 / 報告產生器</div>
+<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px;">
+  <a class="tool-card card" href="https://128003.github.io/Echo-/" target="_blank"><span class="tag yellow" style="width:fit-content;">外部</span><div class="item-name">MSK 超音波報告產生器</div><div class="item-sub">結構化勾選＋注射紀錄輸出</div></a>
+</div>
+
+<div class="section-title" style="margin-top:28px;">🏃 運動處方</div>
+<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px;">
+  <a class="tool-card card" href="https://exerciseprescription.sportsmedicine.tw/" target="_blank"><span class="tag yellow" style="width:fit-content;">外部</span><div class="item-name">運動處方推薦系統</div><div class="item-sub">ACSM FITT-VP 個人化建議</div></a>
+</div>
+
+<div class="card" style="margin-top:30px;">
+  <div class="section-title">📱 病人自填 QR Code</div>
+  <div class="sub">部署上線後，把任一工具網址貼到下方即可產生 QR code 給病人掃描自填。</div>
+  <input type="text" id="urlInput" placeholder="https://你的帳號.github.io/repo名稱/tools/spadi-shoulder.html">
+  <button class="action btn-primary" style="margin-top:10px;" onclick="genQR()">產生 QR Code</button>
+  <div id="qrcode" style="margin-top:12px;"></div>
+</div>
+
+<footer>僅供醫療教育用途 · 各工具資料僅存於使用者本機瀏覽器，不上傳伺服器</footer>
+</div>
+<script>
+function genQR(){
+  const url = document.getElementById('urlInput').value.trim();
+  if(!url) return;
+  document.getElementById('qrcode').innerHTML = '';
+  new QRCode(document.getElementById('qrcode'), {text:url, width:150, height:150});
+}
+</script>
+<style>.tool-card{text-decoration:none;color:inherit;display:flex;flex-direction:column;gap:6px;}</style>
+</body></html>
+
+# 復健科臨床工具箱
+
+評估量表、決策樹與臨床計算器集合，全部資料皆儲存在使用者瀏覽器本機（localStorage），不會上傳到任何伺服器。
+
+## 📁 資料夾結構
+```
+rehab-toolkit/
+├── index.html              ← 工具箱首頁
+├── assets/
+│   ├── style.css            ← 共用樣式
+│   └── common.js             ← 共用儲存/複製/歷史紀錄函式
+└── tools/
+    ├── mmt-score.html
+    ├── rom-goniometer.html
+    ├── ottawa-rules.html
+    ├── outcome-scales.html
+    ├── special-tests.html
+    ├── concussion-track.html
+    ├── cait-ankle-instability.html
+    ├── gird-shoulder.html
+    ├── spadi-shoulder.html
+    └── visa-a-achilles.html
+```
+
+## 🚀 部署到 GitHub Pages（步驟）
+
+1. 到 GitHub 建立一個新的 repository（例如取名 `rehab-toolkit`），設為 Public。
+2. 把這個資料夾內的所有檔案（保持原本的資料夾結構）上傳到該 repository 的根目錄：
+   - 網頁版：直接在 repo 頁面點「Add file → Upload files」，把整個資料夾拖進去
+   - 或用 git 指令：
+     ```
+     git init
+     git add .
+     git commit -m "initial commit"
+     git branch -M main
+     git remote add origin https://github.com/你的帳號/rehab-toolkit.git
+     git push -u origin main
+     ```
+3. 到 repository 的 **Settings → Pages**。
+4. 在「Build and deployment」的 Source 選擇 **Deploy from a branch**，Branch 選 `main`，資料夾選 `/ (root)`，按 Save。
+5. 等待 1–2 分鐘，網址會顯示在同一頁面，格式通常是：
+   `https://你的帳號.github.io/rehab-toolkit/`
+6. 之後每次更新檔案、push 上去，網站會自動重新部署。
+
+## 📱 之後要加 QR Code 給病人自填
+部署完成後，把任一工具的完整網址（例如 `https://你的帳號.github.io/rehab-toolkit/tools/spadi-shoulder.html`）貼到首頁的 QR Code 產生器欄位，就能產生對應 QR code 給病人掃描。
+
+## ⚠️ 注意事項
+- 所有量表分數計算僅供臨床教育輔助參考，不可取代專業判斷。
+- QuickDASH / KOOS / HOOS / WOMAC / CAIT / SPADI / VISA-A 等量表的「官方題目文字」屬原作者版權，本工具僅提供計分公式換算，正式臨床使用請搭配院內授權之正式量表本。
+- 請勿在任何頁面輸入可識別病人身分的真實資料；所有紀錄僅存於使用者當下的瀏覽器，清除瀏覽器資料或換裝置會遺失。
